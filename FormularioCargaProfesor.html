@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="js/js-formulariocargaprofesor.js" language="javascript" type="text/javascript"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg barra rounded">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="./pantalla-principal.html">Unip</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="./Perfil-Administrador.html">Mi Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="./pantalla-principal-administrador.html">Administración</a>
+          </li>
+          <li class="nav-item dropdown">
+            <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a> -->
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <!-- <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li> -->
+        </ul>
+       
+         
+        
+      </div>
+    </div>
+  </nav>
+        <div>
+                 <h1 class="h1 text-white text-left">Administrar profesores</h1>
+        <!--<h3>Información personal</h3>-->
+        </div>
+        <div class="h1 text-white text-center">
+                 <h2>Datos personales</h2>
+        </div>  
+       
+        <div class="container container-reclutadores">
+
+            <form action="/action_page.php" id="formulario">   
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombre" name="nombre"> 
+                        <div class="invalid-feedback" id="error_nombre">
+                            El nombre debe tener menos de 50 caracteres y al menos 3 letras.
+                        </div>                   
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="Apellido">Apellido</label>
+                        <input type="text" class="form-control" placeholder="Ingrese apellido" id="apellido" name="apellido"> 
+                        <div class="invalid-feedback" id="error_apellido">
+                            El apellido debe tener menos de 50 caracteres y al menos tres letras.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="nombre">DNI</label>
+                        <input type="number" max="8" class="form-control" placeholder="Ingrese su DNI sin puntos" id="dni" name="dni"> 
+                        <div class="invalid-feedback" id="error_dni">
+                            El DNI debe tener entre 8 y 9 numeros.
+                        </div>
+                    </div>
+                 </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="nombre">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nac" name="fecha_nac"> 
+                        <div class="invalid-feedback" id="error_fecha_nac">
+                            Debe ser mayor de 17 años y menor de 65.
+                        </div>                   
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="localidad">Localidad</label>
+                        <input type="text" class="form-control" placeholder="Ingrese Dirección" id="localidad" name="localidad"> 
+                        <div class="invalid-feedback" id="error_localidad">
+                            Debe ingresar una dirección valida.
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="nombre_barrio">Barrio</label>
+                        <input type="text" max="8" class="form-control" placeholder="Ingrese barrio" id="barrio" name="barrio"> 
+                        <div class="invalid-feedback" id="error_barrio">
+                            Debe ingresar un barrio valido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    
+                    <div class="form-group col-md-4">
+                        <label for="nombre_calle">Nombre Calle</label>
+                        <input type="text" class="form-control" placeholder="Nombre calle" id="nomcalle" name="nomcalle"> 
+                        <div class="invalid-feedback" id="error_nomcalle">
+                            Debe ingresar una calle valida.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="numero-calle">Número Calle</label>
+                        <input type="number" max= 30 class="form-control" placeholder="Ingrese número de calle" id="numcalle" name="numcalle"> 
+                        <div class="invalid-feedback" id="error_numcalle">
+                            Debe ingresar una altura valida.
+                        </div>                   
+                    </div>
+              
+
+                    <div class="col-md-4">
+                        <label for="nombre">Piso/depto</label>
+                        <input type="text" class="form-control" placeholder="Ingrese piso/depto" id="pisodepto" name="pisodepto"> 
+                        <div class="invalid-feedback" id="error_pisodepto">
+                            Debe ingresar piso o depto.
+                        </div> 
+                    </div>
+           
+                </div>
+
+                <div class="row">
+                    
+                    <div class="form-group col-md-4">
+                        <label for="email">Email (usuario)</label>
+                        <input type="email" class="form-control" placeholder="email" id="email" name="email">
+                        <div class="invalid-feedback" id="error_email">
+                            Debe ingresar un email valido.
+                        </div>  
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="contrasenia_profesor">Contraseña</label>
+                        <input type="password" max= 8 class="form-control" placeholder="Ingrese una contraseña" id="contrasenia" name="contrasenia"> 
+                        <div class="invalid-feedback" id="error_contrasenia">
+                            Debe ingresar una contraseña valida.
+                        </div>                    
+                    </div>
+              
+
+                    <div class="col-md-4">
+                        <label for="contrasenia_profesor_2">Repetir contraseña</label>
+                        <input type="password" class="form-control" placeholder="Ingrese nuevamente una contraseña" id="contrasenia1" name="contrasenia1">
+                        <div class="invalid-feedback" id="error_contrasenia1">
+                            Ambas contraseñas deben ser iguales.
+                        </div>  
+                    </div>
+           
+                </div>
+      
+ 
+       
+           
+                        </div>
+
+                        <!--Formulario de asignacion de materias-->
+
+                                <div class="container">
+                                    <h4 class="h4 text-white text-left">Materias a cargo</h4>  
+                        
+
+                                        <div class="row">
+                                            <div class="form-group col-md-4">
+                                                <label for="nombre">Materia</label>
+                                                <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombre">                    
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="Apellido">Dia y Horario</label>
+                                                <input type="select" class="form-control" placeholder="Ingrese apellido" id="apellido"> 
+                                            </div>
+
+                            <!--Tabla responsive-->
+
+                                            <div class="container container-reclutadores">
+                                                        
+                                                <table class="table table-dark table-hover" >
+                                                <thead>
+                                                    <tr>
+                                                    <th>Materia</th>
+                                                    <th>Día y Horario</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                    <td>Técnicas de software</td>
+                                                    <td>Miercoles 18hs</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td>Introducción a desarrollo de software 1</td>
+                                                    <td>Martes 18hs</td>
+                                                    </tr>               
+                                                </tbody>
+                                                </table>
+                                            </div>
+                                                        
+                         
+                    
+                                        </div>
+                               <!-- Fin Tabla responsive-->
+
+                               <!-- chekbox y botones-->                                        
+                                        
+
+                                        <div class="row box-btn">
+
+                                            <div class="col-sm-6 col-12"></div>
+                                                <div class="col-sm-6 col-12">
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-sm-8 col-12 checkbox">    
+                                                        
+                                                            <label>
+                                                               
+
+                                                        </div>    
+
+                                                        <div class="col-sm-2 col-12">
+
+                                                                    <button type="reset" class="btn btn-primary boton-formulario btn-dark">Cancelar</button>         
+                                                        </div>
+
+                                                        <div class="col-sm-2 col-12">
+
+                                                                    <button type="submit" id="btnenviar" class="btn btn-primary boton-formulario btn-dark">Guardar</button>
+                                                        </div>    
+                                                
+                                                    </div>
+                                        
+
+                                                </div>   
+                        
+                                           </div>
+                    
+
+
+
+
+            </form>
+         
+        </div>  
+
+        <!--Asignacion de usuario y contraseña-->
+
+
+
+</body>
+</html>

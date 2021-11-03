@@ -1,0 +1,59 @@
+/*Media query para Clase botones mobile, sino lo defino los botones se rompen*/
+
+@media (max-width: 575px) {
+   .box-btn .boton-formulario {
+    width: 100%;
+    margin-bottom: 8px;
+
+   }  
+}
+body{
+    /*background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,152,155,1) 0.1%, rgba(0,94,120,1) 94.2% );*/
+    
+}
+
+.barra{
+    background-color: #3a65a1;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .buscador{
+    margin-top: 170px;
+}
+
+.filaTarjetas{
+    margin-top: 130px;
+  }
+.tarjetas{
+    
+    cursor: default;
+    transition: all 400ms ease;
+}
+.tarjetas:hover{
+    box-shadow: 5px 5px 20px rgba(0,0,0,4);
+    transform: translateY(-3%);
+}
+
+.tarjeta-laboral{
+    background-color: #d6d1d1;
+}
+
+.tarjeta-inicio{
+    background-color: #d6d1d1;
+}
+.container-reclutadores{
+    background-color: #efefef;
+}
+ /*
+.fotos-administrador {
+    height: 300px;
+    margin-top: 200px;
+}
+*/

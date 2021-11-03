@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Registro reclutador</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/formularioCargaReclutador.js" language="javascript" type="text/javascript" ></script>
+    </head>
+<body >
+    <container>
+    <nav class="navbar barra navbar-expand-lg navbar-light rounded">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="./pantalla-principal.html">Unip</a>
+          <img src="./img/Logo3.png" alt="5%" width="3%" class="mt-1">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!--<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Mi Perfil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Administracion</a>
+              </li>
+              <li class="nav-item dropdown">
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>-->
+           </div>
+        </div>
+    </nav>
+      <div class="mt-4 container border border-2 border-primary rounded container-reclutadores">
+      <div class="row mt-2">
+          <div class="col-md-4"></div>
+          <h2 class="h2 text-left ">Registrarme a UniP</h2>
+      </div>
+        <div class=" row text-center mb-3">
+        <div class="col-md-4"><h4 class="h2 text-center mb-2 ">Datos personales</h4></div>
+        
+        </div>  
+        <form >   
+
+        <div class="form-group row">
+            
+            <div class="form-group col-md-4">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" placeholder="Ingrese nombre" id="nombre">                    
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="Apellido">Apellido</label>
+                <input type="text" class="form-control" placeholder="Ingrese apellido" id="apellido"> 
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="nombre">Fecha de nacimiento</label>
+                <input type="date" max="8" class="form-control"  id="FechaNac"> 
+            </div>
+                
+            </div>
+
+                <h5>Datos de la organización</h5>
+
+        <div class="form-floating">
+    
+            <div class="input-group mb-4">
+                <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                <input type="email" class="form-control" placeholder="Ingrese su email" id="email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            
+            </div>
+            <div class="row">
+                <div class="form-floating mb-4 col-sm-6">
+                        <label for="floatingPassword">Ingrese una contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña">               
+                </div>
+
+                <div class="form-floating mb-4 col-sm-6">
+                    <label for="floatingPassword">Repita su contraseña</label>
+                    <input type="password" class="form-control" id="password1" placeholder="Contraseña">               
+                </div>
+        </div> 
+                
+            
+            <label for="basic-url" class="form-label">URL de la empresa</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">https://ejemplo.com/usuario/</span>
+                <input type="text" class="form-control" id="urlempresa" aria-describedby="basic-addon3">
+            </div>
+                                    
+            <div class="form-floating mb-4">
+                <label for="floatingPassword">Ingrese CUIT</label>
+                <input type="number" class="form-control" id="cuit" placeholder="xx-xxxxxxxx-x">               
+            </div>
+
+            
+            <div class="form-group row"> 
+                <label for="" class="col-sm-2 form-control-label">Tipo de ente</label> 
+                <div class="col-sm-10"> 
+                        <select class="form-control selectpicker" id="tipo-ente" data-live-search="true"> 
+                            <option data-tokens="Recursos-humanos">Recursos humanos</option>
+                            <option data-tokens="Consultora">Consultora IT</option>
+                            <option data-tokens="Particular">Particular</option> 
+                        </select> 
+                </div>
+            </div> 
+            
+            
+            <div class="input-group">
+                <label class="input-group-text">Resumen de la empresa</label>
+                <textarea class="form-control" id="resumenempresa"aria-label="With textarea"></textarea>
+            </div>
+        </div>    
+     
+ 
+                                                    <!--Botones-->
+
+        <div class="row ">
+            <div class="col-sm-6 col-12">
+                </div>
+                    <div class="col-sm-6 col-12">
+                        <div class="row">
+                            <div class="col-sm-6">
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="reset" class="btn btn-primary boton-formulario btn-dark mt-4 mb-2 ">Cancelar</button>
+                                 <button type="submit" class="btn btn-primary boton-formulario btn-dark mt-4 mb-2 ml-5">Guardar</button>
+                            </div>    
+                        </div>
+                    </div>   
+                <div>
+            </div>
+
+        </div>
+    </container>                             
+</body>
+</html>
