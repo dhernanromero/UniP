@@ -1,4 +1,5 @@
 <?php
+    require_once('ConexionDB.php');
     class ReclutadorModel extends ConexionDB
     {
         public function Listar(){

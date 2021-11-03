@@ -1,13 +1,19 @@
 <?php
-require_once("Model/ReclutadorModel.php");
-require_once("Model/UsuarioModel.php");
-require_once("Clases/Usuario.php");
-require_once("Clases/Reclutador.php");
+require_once("../Model/ReclutadorModel.php");
+require_once("../Model/UsuarioModel.php");
+//require_once("Clases/Usuario.php");
+//require_once("Clases/Reclutador.php");
 class ReclutadorController
 {
-    private $reclutadorModel = new ReclutadorModel();
-    private $usuarioModel = new UsuarioModel();
+    private $reclutadorModel;
+    private $usuarioModel;
     //Metodo para obtener todos los registros
+
+    function __construct()
+    {
+        $this->reclutadorModel = new ReclutadorModel();
+        $this->usuarioModel = new UsuarioModel();
+    }
     public function Listar()
     {
        $datos=$this->reclutadorModel->Listar();
@@ -38,4 +44,21 @@ class ReclutadorController
     }
 
 }
+
+    if ( isset($_GET["method"]) ) {
+
+        $action = $_GET["method"];
+        echo($action);
+        $reclutadorController = new ReclutadorController();
+
+        switch ( $action ) {
+            case 'listar':
+                $reclutadorController->Listar();
+                break;
+            case 'guardar':
+                $reclutadorController->Guardar();
+                break;
+        }
+    }
+
 ?>

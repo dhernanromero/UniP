@@ -3,16 +3,16 @@ const formulario = document.getElementById("formulario");
 const inputs = document.querySelectorAll("#formulario input");
 
 const expresiones = {
-    nombre=/^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
-    apellido=/^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
-    dni=/^[0-9]{8,8}$/,
-    localidad=/^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
-    barrio=/^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
-    nombrecalle=/^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
-    numerocalle=/^[0-9]{1,10}$/,
-    pisodepto=/^(piso|depto)$/i,
-    email=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    contrasenia= /^.{12,25}$/ // 12 a 25 digitos.
+    nombre: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
+    apellido: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
+    dni: /^[0-9]{8,8}$/,
+    localidad: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
+    barrio: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
+    nombrecalle: /^[a-zA-ZÀ-ÿ\s]{3,40}$/, // Letras y espacios, pueden llevar acentos.
+    numerocalle: /^[0-9]{1,10}$/,
+    pisodepto: /^(piso|depto)$/i,
+    email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    contrasenia:  /^.{12,25}$/ // 12 a 25 digitos.
 }
 const campos = {
 	nombre: false,
@@ -112,6 +112,8 @@ inputs.forEach((input) => {
 });
 
 formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+
 	const reclutador = {
         nombre: document.getElementById('nombre').value,
         apellido: document.getElementById('apellido').value,
@@ -119,18 +121,19 @@ formulario.addEventListener('submit', (e) => {
         fecha_nac: document.getElementById('FechaNac').value,
         tipoente: document.getElementById('tipo-ente').value,
         email: document.getElementById('email').value,
-        contrasenia: document.getElementById('password').value,
-        contrasenia1:document.getElementById('password1').value,
+        contrasenia: document.getElementById('password1').value,
+        contrasenia1:document.getElementById('password2').value,
         resumenempresa: document.getElementById('resumenempresa').value ,
         urlempresa: document.getElementById('urlempresa').value
     }
     console.log(reclutador);
     console.log(campos);
     try{
-        if(campos.usuario && campos.nombre && campos.password && campos.correo ){
+        //if(campos.usuario && campos.nombre && campos.password && campos.correo ){
+        if( true) {
             e.preventDefault();
             console.log("entre al metodo")
-            fetch('ReclutadorController.php', {
+            fetch('Controller/ReclutadorController.php?method=create', {
                 method: 'POST', // or 'PUT'
                 body: JSON.stringify(reclutador), // data can be `string` or {object}!
                 headers:{

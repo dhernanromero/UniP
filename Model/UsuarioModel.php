@@ -1,4 +1,5 @@
 <?php
+    require_once('ConexionDB.php');
     class UsuarioModel extends ConexionDB
     {
         public function Listar()
