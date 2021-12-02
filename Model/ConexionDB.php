@@ -1,8 +1,7 @@
 <?php
-
     class ConexionDB { 
         private $servername = "localhost";
-        private $dbname = "Unip";
+        private $dbname = "unip";
         private $username = "root";
         private $password = "";
         private $objPDO;
@@ -22,7 +21,8 @@
                 
                 $this->estado = "Conectado";
             } catch(PDOException $e){
-                $this->estado = "ERROR: " . $e->getMessage();
+                $this->estado = "ERROR-No se pudo conectar: " . $e->getMessage();
+                $this->desconectar();
                 echo( $e->getMessage() );
             }
         }
@@ -37,14 +37,17 @@
             try {
                 if( is_array($parametros)){
                     $consulta =  $this->objPDO->prepare($this->query);
+                  
                     $consulta->execute($parametros);
+                    // $rts =   $consulta->fetchAll(PDO::FETCH_ASSOC);
+                    // return $rts;
                 } else {
                     $resultado =  $this->objPDO->prepare($this->query);
                     $resultado->execute();
                 }
             } catch (PDOException $e) {
-                $this->estado = "ERROR: " . $e->getMessage();
-                //$this->desconectar();
+                $this->estado = "ERROR-No se pudo ejecutar: " . $e->getMessage();
+                $this->desconectar();
             }
         }
 
@@ -53,6 +56,7 @@
                 if( is_array($parametros)){
                     $consulta =  $this->objPDO->prepare($this->query);
                     $consulta->execute($parametros);
+                    // return $this->rows =  $consulta->fetchAll(PDO::FETCH_ASSOC);
                     $this->rows =  $consulta->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     $consulta =  $this->objPDO->prepare($this->query);
@@ -60,7 +64,8 @@
                     $this->rows =  $consulta->fetchAll(PDO::FETCH_ASSOC);
                 }
             } catch (PDOException $e) {
-                $this->estado = "ERROR: " . $e->getMessage();
+                $this->estado = "ERRO-No se pudo obtener Rows: " . $e->getMessage();
+                $this->desconectar();
             }
         }
 
@@ -68,7 +73,8 @@
             try {
                 return $this->objPDO->lastInsertId();
             } catch (PDOException $e) {
-                $this->estado = "ERROR: " . $e->getMessage();
+                $this->estado = "ERROR-No se pudo obtener el ultimo Id: " . $e->getMessage();
+                $this->desconectar();
             }
         }
 

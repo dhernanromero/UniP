@@ -1,5 +1,5 @@
 <?php
-    require_once('ConexionDB.php');
+    require_once("ConexionDB.php");
     class UsuarioModel extends ConexionDB
     {
         public function Listar()
@@ -11,7 +11,7 @@
             
         }
 
-        public function Guardar(Usuario $usr)
+        public function Guardar(Persona $usr)
         {
             $this->query="INSERT INTO Usuario(IdUsuario,Nombre, Apellido,DNI,Email,FechaNacimiento,FotoPerfil)
             VALUES(:idUsr,:nombre,:apellido,:dni,:email,:fechaNac,:fotoPrf)";
@@ -27,10 +27,21 @@
             return $this->ultimoId();
         }
 
-    //     public function ObtenerId()
-    //     {
-    //         $this->query = "SELECT MAX(IdReclutador) From Reclutador";
-    //         $this->$recutador;
-    //     }
+        public function BuscarUsuario($correo,$pass)
+        {
+            $this->query = "SELECT p.IdPersona as IdPersona, Nombre, Apellido, DNI, Email,r.IdRol as IdRol,r.Descripcion as Rol FROM persona p
+            INNER JOIN rolespersona rp ON p.IdPersona = rp.IdUsuario
+            INNER JOIN roles r ON r.IdRol = rp.IdTipoUsuario
+            WHERE Email = :correo AND Password = :pass"; 
+            
+            $this->obtenerRows(array(
+                ':correo' => $correo,
+                // ':pass' => sha1($pass)
+                ':pass' => $pass
+            ));
+
+            return $this->rows;
+            
+        }
     }
 ?>

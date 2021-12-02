@@ -1,36 +1,28 @@
 <?php
-    require_once("../dirs.php");
-    require_once (MODEL_PATH."ConexionDB.php");
+    
+  /*   require_once("../dirs.php"); */
+    require_once ("ConexionDB.php");
 
-    class ReclutadorModel extends ConexionDB
+    class ProfesorModel extends ConexionDB
     {
-
         public function Listar()
         {
             $this->query = "SELECT IdPersona,Nombre, Apellido, DNI, Email, FechaNacimiento, FotoPerfil, Nacionalidad, Telefono, IdEstadoCivil, NombreCalle, NumeroCalle, Password, IdProvincia, IdLocalidad,P.IdEstado, E.Descripcion AS Estado
-                            FROM Persona P
-                            INNER JOIN estadoreclutador E on P.IdEstado = E.IdEstado";
-                           
+            FROM Persona P
+            INNER JOIN estadoprofesor E on P.IdEstado = E.IdEstado";
+           
             $this->obtenerRows();
             return $this->rows;
         }
 
-        public function ListarPerfil($id)
+        public function LitarProfesorPorId($id)
         {
-            
-            $this->query ="SELECT IdPersona, p.Nombre as Nombre, Apellido, DNI, Email, FechaNacimiento, FotoPerfil, 
-            Nacionalidad, Telefono, p.IdEstadoCivil, ec.Descripcion as EstadoCivil, NombreCalle, NumeroCalle, 
-            Password, p.IdProvincia, prov.Nombre as Provincia, p.IdLocalidad, loc.Descripcion as Localidad
-            From persona p 
-            INNER JOIN provincia prov on p.IdProvincia = prov.IdProvincia 
-            INNER JOIN localidad loc on p.IdLocalidad = loc.IdLocalidad 
-            INNER JOIN estado_civil ec on p.IdEstadoCivil = ec.IdEstadoCivil 
-            WHERE IdPersona = :IdPers";
-            $this->obtenerRows(array(
-                ':IdPers'=> intval($id)
+            $this->query ="SELECT IdPersona, Nombre, Apellido, DNI, Email, FechaNacimiento,FotoPerfil,Nacionalidad,Telefono,IdEstadoCivil, NombreCalle,NumeroCalle,IdProvincia,IdLocalidad
+            From Persona
+            WHERE IdPersona = :IdPersona";
+            return $this->obtenerRows(array(
+                ':IdPersona'=> intval($id)
             ));
-
-            return $this->rows;
         }
 
         public function ModificarEstado($id,$idestado)
@@ -43,12 +35,8 @@
                                 ':id' => $id 
             ));
         }
-
-        public function Guardar(Reclutador $datos)
+        public function Guardar(Profesor $datos)
         {
-            // print_r($datos);
-            // print_r($this);
-            // echo($datos->getNombre()."NombreModel");
             try
             {
                 $this->query = "INSERT INTO persona (Nombre, Apellido, DNI, Email, FechaNacimiento, FotoPerfil, Nacionalidad, Telefono, IdEstadoCivil, NombreCalle, NumeroCalle, Password, IdProvincia, IdLocalidad)
@@ -69,34 +57,12 @@
                         ':idProvincia' => $datos->getProvincia(),
                         ':idLocalidad' => $datos->getLocalidad()
                     ));
-                
-                // echo($this->estado);
-                // $datos->setIdUsuario( $this->ultimoId());
                 return $this->ultimoId();
-                // echo(strval($this->ultimoId()));
-                // echo($datos->getNombre());
-                // echo($this->estado);
-                // echo('Ok');
             }
             catch(Exception $e)
             {
-                $this->estado = "ERROR INSERTAR RECLUTADOR: " . $e->getMessage();
+                $this->estado = "ERROR INSERTAR PROFESOR: " . $e->getMessage();
             }
-        }
-
-        public Function ListarOfertas($idReclutador)
-        {
-            $this->query = "SELECT IdOferta,Titulo, NombreEmpresa, o.IdTipoContrato as IdTipoContrato,o.IdTipoJornada as IdTipoJornada,
-            UbicacionOferta,tp.DetalleContrato, tj.Detalle
-            FROM oferta o
-            INNER JOIN tipocontrato tp on tp.IdTipoContrato = o.IdTipoContrato
-            INNER JOIN tipojornada tj on tj.IdTipoJornada = o.IdTipoJornada
-            WHERE IdReclutador = :idRec";
-
-            $this->obtenerRows(array(
-                ":idRec" => $idReclutador
-            ));
-            return $this->rows;
         }
     }
 
