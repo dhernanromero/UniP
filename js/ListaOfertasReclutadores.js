@@ -1,12 +1,11 @@
 $(document).ready(function(){
-    $(".btn-aceptar").click(function(){
+    $("#a1").click(function(){
         console.log(this);
-        $("#mensaje").html("Seguro que desea aceptar la socilcitud?");
-        $('#mensajeModal').modal('toggle');
+        // $('#mensajeModal').modal('toggle');
         var id = $(this).attr('data-id');
         console.log(id);
         var dato = {
-            idpersona: parseInt(id),
+            idoferta: parseInt(id),
             idestado: 2 
         }
         confirmar_resultado(dato);
@@ -38,7 +37,7 @@ $(document).ready(function(){
                 type: "post",
                 data: JSON.stringify(dato),
                 cache: false,
-                url: "ModificarEstadoReclutador.php",
+                url: "./Rutas/VerOferta.php",
                 dataType: "json",
                 error: function (dato, error) {
                     console.log(dato);

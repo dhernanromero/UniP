@@ -1,4 +1,3 @@
-
 const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -13,9 +12,11 @@ const expresiones = {
     numero:/^\d{1,10}$/, 
 
 }
-const formulario = document.getElementById('formulario');
 
+
+const formulario = document.getElementById('formulario');
 const inputs =  document.querySelectorAll('#formulario input');
+
 /*var nombre = document.getElementById('nombre');
 var apellido = document.getElementById('apellido');
 var nacionalidad = document.getElementById('nombre');
@@ -47,9 +48,6 @@ const validarFormulario = (e) => {
        case "estadoCivil":
             console.log('funciona');
        break;
-       case "edad":
-        validarCampo(expresiones.edad,e.target,'edad')
-       break;
        case "dni":
             validarCampo(expresiones.dni,e.target,'dni');
        break;
@@ -71,10 +69,6 @@ const validarFormulario = (e) => {
        case "numero":
           validarCampo(expresiones.numero,e.target,'numero');
           break;
-       break;
-       case "cp":
-          validarCampo(expresiones.numero,e.target,'cp');
-       break;
        case "email":
           validarCampo(expresiones.correo,e.target,'email');
        break;
@@ -86,11 +80,71 @@ const validarFormulario = (e) => {
 inputs.forEach((input)=> {
     input.addEventListener('keyup', validarFormulario);
     input.addEventListener('blur',validarFormulario);
+    
 });
 
 formulario.addEventListener('submit', (e) => {
-     e.preventDefault();
+     //e.preventDefault();
 });
+
+function enviar (){
+      //guardo los valores de los elementos del formulario en variables.
+      
+}
+formulario.onsubmit = function(e){
+   
+   var nombre = document.getElementById('nombre');
+   var apellido = document.getElementById('apellido');
+   var nacionalidad = document.getElementById('nacionalidad');
+   var estadoCivil = document.getElementById('estadoCivil');
+   var dni = document.getElementById("dni");
+   var nacimiento = document.getElementById("nacimiento");
+   var provincia = document.getElementById('provincia');
+   var localidad = document.getElementById('localidad');
+   var calle = document.getElementById('calle');
+   var numero = document.getElementById('numero');
+   var email = document.getElementById('email');
+   var numeroTelefono = document.getElementById('numeroTelefono');
+   var preferencia = document.getElementById('preferencia');
+   var imagen =  document.getElementById('imagen');
+
+   
+      //creo un arreglo con los valores de los elementos del formulario .
+   const postData= {
+      nombre:nombre.value,
+      apellido:apellido.value,
+      dni:dni.value,
+      nacionalidad:nacionalidad.value,
+      estadoCivil:estadoCivil.value,
+      nacimiento:nacimiento.value,
+      provincia:provincia.value,
+      localidad:localidad.value,
+      calle:calle.value,
+      numero:numero.value,
+      email:email.textContent,
+      telefono:numeroTelefono.value,
+      preferencia:preferencia.value,
+   }
+   //envio el arreglo mediante POST .
+   /*$.post('Rutas/alumno-add.php',postData,function(response){
+      console.log(response);
+      //window.alert("Guardado");
+   })*/
+   var formData = new FormData($("#formulario")[0]);
+   formData.append('email', email.textContent);
+   $.ajax({
+       url: "Rutas/alumno-add.php",
+       type: "POST",
+       data: formData,
+       processData: false,
+       contentType: false,
+       success: function(response){
+           console.log(response);
+       }
+   });
+
+   e.preventDefault();
+};
 
 
 const validarCampo = (expresion,input, campo) => {
