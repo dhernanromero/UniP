@@ -1,7 +1,13 @@
+
+<?php
+session_start();
+if($_SESSION["IdRol"] != 2){
+  header("Location: login.php"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-<!--prueba
--->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,63 +17,26 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="./fontawesome/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-  	<script type="text/javascript" src="js/js-abm-reclutador.js" defer></script>
+  	<script type="text/javascript" src="js/js-abm-departamento-alumnos.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 
-    <title>Reclutadores</title>
+    <title>ABM departamento de alumnos</title>
 </head>
 
 <body>
                     <!--INICIO DE NAVBAR-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="./pantalla-principal-administrador.html">Unip</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="Perfil-Administrador.html">Mi Perfil</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="ABMReclutadores.html">Gestión de usuarios</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a> -->
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <!-- <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                  </li> -->
-                </ul>
-                <!-- <form class="d-flex">
-                    colocar boton de inicio y cerrar sesion en esta parte
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> -->
-              </div>
-            </div>
-          </nav>
-                        <!--FIN DE NAVBAR-->
-
+        <?php require_once("header.php"); ?>
     
                           <!--Tabla de ABM-->
     <div>
       <div class="container">
         <div class="row shadow">
           <div class="col-md-12">
-            <h1 class="h1">Lista de reclutadores</h1>
+            <h1 class="h1">Departamento de alumnos</h1>
             <table class="table table-dark">
               <thead>
                 <tr>
@@ -85,7 +54,7 @@
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                         Ver
                       </button>
-                      <button type="button" class="borrar btn btn-primary">
+                      <button type="button" class="borrar btn btn-primary" href="formularioDepartamentoAlumnos.html">
                           Editar
                       </button>
                       <button type="button" class="borrar btn btn-primary">Borrar</button>
@@ -98,7 +67,7 @@
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                         Ver
                       </button>
-                      <button type="button" class="borrar btn btn-primary" href="ABMReclutadores.html">
+                      <button type="button" class="borrar btn btn-primary">
                           Editar
                       </button>
                       <button type="button" class="borrar btn btn-primary">Borrar</button>
@@ -111,7 +80,7 @@
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                       Ver
                     </button>
-                    <button type="button" class="borrar btn btn-primary">
+                    <button type="button" class="borrar btn btn-primary" href="formularioDepartamentoAlumnos.html">
                         Editar
                     </button>
                     <button type="button" class="borrar btn btn-primary">Borrar</button>
@@ -119,9 +88,9 @@
               </tr>
               </tbody>
             </table> 
-            <!-- <a href="FormularioCargaReclutador.html">
-              <input class="btn btn-primary" type="button" value=" Agregar Reclutador">
-            </a> -->
+            <a href="./formularioDepartamentoAlumnos.html" class="btn btn-primary" >
+                Agregar
+            </a>
           </div> 
         </div>    
       </div>                                 
@@ -131,11 +100,11 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Nombre reclutador</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Departamento de alumnos</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Aquí se mostrarían los datos de cada reclutador levantandolo de la base de datos.
+            Aquí se mostrarían los datos de cada profesor levantandolo de la base de datos.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -143,6 +112,8 @@
         </div>
       </div>
     </div>
-
+    <div>
+      <a href="logout.php">Salir</a>
+    </div>
 </body>
 </html>
